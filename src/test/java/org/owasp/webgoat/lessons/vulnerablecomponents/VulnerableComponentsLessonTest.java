@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.StreamException;
+import com.thoughtworks.xstream.security.AnyTypePermission;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -31,6 +32,8 @@ public class VulnerableComponentsLessonTest {
   @Test
   public void testTransformation() throws Exception {
     XStream xstream = new XStream();
+    // Intentionally insecure for this lesson to validate vulnerable deserialization behavior.
+    xstream.addPermission(AnyTypePermission.ANY);
     xstream.setClassLoader(Contact.class.getClassLoader());
     xstream.alias("contact", ContactImpl.class);
     xstream.ignoreUnknownElements();
@@ -41,6 +44,8 @@ public class VulnerableComponentsLessonTest {
   @Disabled
   public void testIllegalTransformation() throws Exception {
     XStream xstream = new XStream();
+    // Intentionally insecure for this lesson to validate vulnerable deserialization behavior.
+    xstream.addPermission(AnyTypePermission.ANY);
     xstream.setClassLoader(Contact.class.getClassLoader());
     xstream.alias("contact", ContactImpl.class);
     xstream.ignoreUnknownElements();
@@ -54,6 +59,8 @@ public class VulnerableComponentsLessonTest {
   @Test
   public void testIllegalPayload() throws Exception {
     XStream xstream = new XStream();
+    // Intentionally insecure for this lesson to validate vulnerable deserialization behavior.
+    xstream.addPermission(AnyTypePermission.ANY);
     xstream.setClassLoader(Contact.class.getClassLoader());
     xstream.alias("contact", ContactImpl.class);
     xstream.ignoreUnknownElements();
