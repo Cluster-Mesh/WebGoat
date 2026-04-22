@@ -32,6 +32,7 @@ public class VulnerableComponentsLessonTest {
   @Test
   public void testTransformation() throws Exception {
     XStream xstream = new XStream();
+    // Intentionally insecure for this lesson to validate vulnerable deserialization behavior.
     xstream.addPermission(AnyTypePermission.ANY);
     xstream.setClassLoader(Contact.class.getClassLoader());
     xstream.alias("contact", ContactImpl.class);
@@ -43,6 +44,7 @@ public class VulnerableComponentsLessonTest {
   @Disabled
   public void testIllegalTransformation() throws Exception {
     XStream xstream = new XStream();
+    // Intentionally insecure for this lesson to validate vulnerable deserialization behavior.
     xstream.addPermission(AnyTypePermission.ANY);
     xstream.setClassLoader(Contact.class.getClassLoader());
     xstream.alias("contact", ContactImpl.class);
@@ -57,6 +59,7 @@ public class VulnerableComponentsLessonTest {
   @Test
   public void testIllegalPayload() throws Exception {
     XStream xstream = new XStream();
+    // Intentionally insecure for this lesson to validate vulnerable deserialization behavior.
     xstream.addPermission(AnyTypePermission.ANY);
     xstream.setClassLoader(Contact.class.getClassLoader());
     xstream.alias("contact", ContactImpl.class);
